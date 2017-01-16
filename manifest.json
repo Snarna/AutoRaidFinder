@@ -2,22 +2,39 @@
   "manifest_version": 2,
 
   "name": "AutoRaidFinder",
+
   "description": "Auto Find Raid & Enter & Battle",
+
   "version": "0.0.1",
+
+  "icons":{
+    "16" : "src/pic/icon.png",
+    "48" : "src/pic/icon.png",
+    "128" : "src/pic/icon.png"
+  },
 
   "browser_action": {
     "default_title": "ARF",
     "default_icon": "src/pic/icon.png",
     "default_popup": "popup.html"
   },
+
   "permissions": [
     "activeTab",
-    "storage"
+    "storage",
+    "background",
+    "clipboardRead",
+    "clipboardWrite",
+    "notifications",
+    "webRequest",
+    "webRequestBlocking"
   ],
+  
   "background": {
-  "scripts": ["background.js"],
-  "persistent": true
+    "scripts": ["background.js"],
+    "persistent": false
   },
+
   "content_scripts":[
     {
       "all_frames": true,

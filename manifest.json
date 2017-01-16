@@ -8,14 +8,14 @@
   "version": "0.0.1",
 
   "icons":{
-    "16" : "src/pic/icon.png",
-    "48" : "src/pic/icon.png",
-    "128" : "src/pic/icon.png"
+    "16" : "src/pic/icon2.png",
+    "48" : "src/pic/icon2.png",
+    "128" : "src/pic/icon2.png"
   },
 
   "browser_action": {
     "default_title": "ARF",
-    "default_icon": "src/pic/icon.png",
+    "default_icon": "src/pic/icon2.png",
     "default_popup": "popup.html"
   },
 
@@ -29,7 +29,7 @@
     "webRequest",
     "webRequestBlocking"
   ],
-  
+
   "background": {
     "scripts": ["background.js"],
     "persistent": false

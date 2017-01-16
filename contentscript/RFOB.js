@@ -27,14 +27,14 @@ var RFOB = {
 
     //Send Tab ID To Background
     chrome.runtime.sendMessage({userAction: 'getRaidFinderTabID'}, function(response){
-      this.CurrentTabID = response.tabId;
-      console.log("RF Tab ID:" + response.tabId);
+      this.CurrentTabID = response.tabID;
+      console.log("RF Tab ID:" + response.tabID);
     });
 
     //Listen to any incoming messages
     chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
-      if(msg.backCommand == 'startob'){
-        this.ObRowNum = msg.ObRowNum;
+      if(msg.backCommand == 'startOb'){
+        this.obRowNum = msg.obRowNum;
         this.startOb();
         console.log("Start OB on Row:" msg.obRowNum);
       }

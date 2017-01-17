@@ -36,12 +36,13 @@ function setOb(){
   RFOB.Ob = new MutationObserver(function(mutations){
     mutations.forEach(function(mutation) {
       var rawRaidID = mutation.addedNodes[0].innerText;
-      var raidID = rawRaidID.substring(rawRaidID.length-8, rawRaidID.length);
+      var raidID = rawRaidID.substring(rawRaidID.length-9, rawRaidID.length);
       chrome.runtime.sendMessage({userAction: "raidFound", raidID: raidID},
         function(response) {
           console.log("Received ID:" + response.raidID);
       });
     });
+    observer.disconnect();
   });
 }
 

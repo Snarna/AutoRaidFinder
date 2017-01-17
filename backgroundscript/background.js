@@ -13,8 +13,11 @@ chrome.runtime.onMessage.addListener(
     switch (request.userAction) {
       case "getRaidFinderTabID":
         chrome.storage.sync.set({'RFTabID':sender.tab.id});
-        sendResponse({tabID:sender.tab.id});
+        sendResponse({tabID: sender.tab.id});
         break;
+      case "getGameTabID":
+        chrome.storage.sync.set({'gameTabID': sender.tab.id});
+        sendResponse({tabID: sender.tab.id});
       case "startOb":
         startOb(request.rowNum);
         sendResponse({userActionAnswer: "Backend received. Start Observation On Row:" + request.rowNum});

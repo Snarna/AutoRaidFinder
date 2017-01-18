@@ -2,9 +2,9 @@
  (c) Snarna , since 2017
 */
 //Variables
-var TabIds = {
-  RFID: null,
-  GameID: null
+var mainController = {
+  status: null,
+  handle: null
 }
 
 //Listen To Any Incoming Messages

@@ -1,4 +1,4 @@
-var battleClass = {
+var enterClass = {
   currentTabID: null,
   raidID: null,
   status: null
@@ -11,8 +11,8 @@ function setBattleClass(){
 
 function getGameTabID(){
   chrome.runtime.sendMessage({userAction: 'getGameTabID'}, function(response){
-    battleClass.currentTabID = response.tabID;
-    console.log("Game Tab ID:" + battleClass.currentTabID);
+    enterClass.currentTabID = response.tabID;
+    console.log("Game Tab ID:" + enterClass.currentTabID);
   });
 }
 
@@ -26,7 +26,7 @@ function startListen(){
 }
 
 function setRaid(raidID){
-  battleClass.raidID = raidID;
+  enterClass.raidID = raidID;
 }
 
 function enterBattle(){
@@ -36,7 +36,7 @@ function enterBattle(){
 }
 
 function joinRaid(){
-  $('.frm-battle-key')[0].value = battleClass.raidID;
+  $('.frm-battle-key')[0].value = enterClass.raidID;
   Injector.inject("$(\".btn-post-key\").first().trigger('tap');");
 }
 

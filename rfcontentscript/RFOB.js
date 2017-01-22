@@ -42,7 +42,7 @@ function setOb(){
           console.log("Received ID:" + response.raidID);
       });
     });
-    observer.disconnect();
+    //RFOB.Ob.disconnect();
   });
 }
 

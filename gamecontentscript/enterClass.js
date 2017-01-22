@@ -1,19 +1,16 @@
+/*
+ (c) Snarna , since 2017
+*/
 var enterClass = {
   currentTabID: null,
   raidID: null,
   status: null
 }
 
-function setBattleClass(){
-  getGameTabID();
+function setEnterClass(){
+  //Update Game Status
+  StatusUpdater.update("idle");
   startListen();
-}
-
-function getGameTabID(){
-  chrome.runtime.sendMessage({userAction: 'getGameTabID'}, function(response){
-    enterClass.currentTabID = response.tabID;
-    console.log("Game Tab ID:" + enterClass.currentTabID);
-  });
 }
 
 function startListen(){

@@ -30,15 +30,15 @@
   ],
 
   "background": {
-    "scripts": ["backgroundscript/background.js"],
-    "persistent": true
+    "scripts": ["backgroundscript/background.js", "backgroundscript/rfcontroller.js", "backgroundscript/battlecontroller.js"],
+    "persistent": false
   },
 
   "content_scripts":[
     {
       "all_frames": true,
       "matches": ["http://gbf.game.mbga.jp/*"],
-      "js": ["src/js/jquery-2.2.3.min.js", "src/js/popup.js", "gamecontentscript/injector.js", "gamecontentscript/battleClass.js", "gamecontentscript/gameMain.js"]
+      "js": ["src/js/jquery-2.2.3.min.js", "src/js/popup.js","gamecontentscript/statusupdater.js" ,"gamecontentscript/injector.js", "gamecontentscript/enterClass.js","gamecontentscript/battleClass.js" ,"gamecontentscript/gameMain.js"]
     },
     {
       "matches": ["*://gbf-raidfinder.aikats.us/*"],

@@ -1,7 +1,7 @@
 /*
  (c) Snarna , since 2017
 */
-var enterClass = {
+var EnterClass = {
   currentTabID: null,
   raidID: null,
   status: null
@@ -23,7 +23,7 @@ function startListen(){
 }
 
 function setRaid(raidID){
-  enterClass.raidID = raidID;
+  EnterClass.raidID = raidID;
 }
 
 function enterBattle(){
@@ -33,7 +33,7 @@ function enterBattle(){
 }
 
 function joinRaid(){
-  $('.frm-battle-key')[0].value = enterClass.raidID;
+  $('.frm-battle-key')[0].value = EnterClass.raidID;
   Injector.inject("$(\".btn-post-key\").first().trigger('tap');");
 }
 

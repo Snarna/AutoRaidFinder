@@ -38,7 +38,7 @@
     {
       "all_frames": true,
       "matches": ["http://gbf.game.mbga.jp/*"],
-      "js": ["src/js/jquery-2.2.3.min.js", "src/js/popup.js","gamecontentscript/statusupdater.js" ,"gamecontentscript/injector.js", "gamecontentscript/enterClass.js","gamecontentscript/battleClass.js" ,"gamecontentscript/gameMain.js"]
+      "js": ["src/js/jquery-2.2.3.min.js", "src/js/popup.js","gamecontentscript/statusupdater.js" ,"gamecontentscript/injector.js", "gamecontentscript/enterclass.js","gamecontentscript/battleclass.js" ,"gamecontentscript/gamemain.js"]
     },
     {
       "matches": ["*://gbf-raidfinder.aikats.us/*"],

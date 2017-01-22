@@ -2,7 +2,7 @@
  (c) Snarna , since 2017
 */
 
-var battleClass = {
+var BattleClass = {
 
 }
 

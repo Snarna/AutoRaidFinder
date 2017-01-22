@@ -10,8 +10,8 @@ function checkURL(target){
 
 function getGameTabID(){
   chrome.runtime.sendMessage({userAction: 'getGameTabID'}, function(response){
-    enterClass.currentTabID = response.tabID;
-    console.log("Game Tab ID:" + enterClass.currentTabID);
+    EnterClass.currentTabID = response.tabID;
+    console.log("Game Tab ID:" + EnterClass.currentTabID);
   });
 }
 

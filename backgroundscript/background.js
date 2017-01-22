@@ -2,9 +2,8 @@
  (c) Snarna , since 2017
 */
 //Variables
-var mainController = {
-  status: null,
-  handle: null
+var game = {
+  status: null
 }
 
 //Listen To Any Incoming Messages
@@ -18,14 +17,19 @@ chrome.runtime.onMessage.addListener(
       case "getGameTabID":
         chrome.storage.sync.set({'gameTabID': sender.tab.id});
         sendResponse({tabID: sender.tab.id});
+        break;
+      case "UpdateGameStatus":
+        game.status = request.gameStatus;
+        break;
       case "startOb":
         startOb(request.rowNum);
         sendResponse({userActionAnswer: "Backend received. Start Observation On Row:" + request.rowNum});
         break;
       case "raidFound":
-        //Do something
-        sendRaidIDToGame(request.raidID);
-        sendResponse({raidID: request.raidID});
+        if(game.status == "idle"){
+          sendRaidIDToGame(request.raidID);
+          sendResponse({raidID: request.raidID});
+        }
         break;
       default:
         console.log("No such command.");

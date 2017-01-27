@@ -31,7 +31,7 @@
 
   "background": {
     "scripts": ["backgroundscript/background.js", "backgroundscript/rfcontroller.js", "backgroundscript/battlecontroller.js"],
-    "persistent": false
+    "persistent": true
   },
 
   "content_scripts":[

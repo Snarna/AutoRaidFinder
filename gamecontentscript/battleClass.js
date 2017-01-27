@@ -13,15 +13,13 @@ var BattleClass = {
     BattleClass.startListen();
   },
   startListen: function(){
-    //BattleClass.setUpObserver();
     chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
       if(msg.backCommand == 'startAutoAttack'){
-        //Start Auto-attack
-        BattleClass.setUpObserver();
+        BattleClass.setUpAutoAttack();
       }
     });
   },
-  setUpObserver: function(){
+  setUpAutoAttack: function(){
     var intHandle = setInterval(function(){
       BattleClass.battleButton = $(".btn-attack-start")[0];
       if(BattleClass.battleButton){

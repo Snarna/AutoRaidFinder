@@ -6,20 +6,25 @@ var game = {
   gameTabID: null,
   RFTabID: null,
   status: null,
-  ini: function(){
-    this.status = "idle";
-  }
+  userFlag: 0
 }
 
 //Listen To Any Incoming Messages
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     switch (request.userAction) {
+      //From Game Content Script
       case "UpdateGameStatus":
         game.status = request.gameStatus;
+        if(game.status == 'idle' && game.userFlag == 1){
+          //Do nothing, wait
+        }
+        else if(game.status == 'InBattle' && game.userFlag == 1){
+          BattleController.startAutoAttack();
+        }
         break;
 
-
+      //Get IDs
       case "getRaidFinderTabID":
         chrome.storage.sync.set({'RFTabID':sender.tab.id});
         game.RFTabID = sender.tab.id;
@@ -31,19 +36,27 @@ chrome.runtime.onMessage.addListener(
         sendResponse({tabID: sender.tab.id});
         break;
 
-
+      //From Popup
+      case "stopOb":
+        RFController.stopOb();
+        game.userFlag = 0;
+        break;
       case "startOb":
         RFController.startOb(request.rowNum);
+        game.userFlag = 1;
         sendResponse({userActionAnswer: "Backend received. Start Observation On Row:" + request.rowNum});
         break;
       case "raidFound":
-        if(game.status == "idle"){
+        if(game.status == "idle" && game.userFlag == 1){
           RFController.sendRaidIDToGame(request.raidID);
           sendResponse({raidID: request.raidID});
         }
+        else{
+          sendResponse({raidID: "Unsupported game status:" + game.status + " " + game.userFlag});
+        }
         break;
 
-        
+
       default:
         console.log("No such command.");
         break;

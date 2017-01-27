@@ -11,6 +11,6 @@ function checkURL(target){
 function mainLoadControl(){
   //Raid Finder Main Page
   if(checkURL("gbf-raidfinder.aikats.us") != -1) {
-    setRFOB();
+    RFOB.setRFOB();
   }
 }

@@ -7,6 +7,11 @@ var RFController = {
       chrome.tabs.sendMessage(obj.RFTabID, {backCommand: 'startOb', obRowNum: rowNum})
     });
   },
+  stopOb: function(){
+    chrome.storage.sync.get('RFTabID', function(obj){
+      chrome.tabs.sendMessage(obj.RFTabID, {backCommand: 'stopOb'})
+    });
+  },
   sendRaidIDToGame: function(raidID){
     chrome.storage.sync.get('gameTabID', function(obj){
         chrome.tabs.update(obj.gameTabID, {selected:true});

@@ -13,7 +13,7 @@ var EnterClass = {
   startListen: function(){
     chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
       if(msg.backCommand == 'injectToGame'){
-        EnterClass.raidID = raidID;
+        EnterClass.raidID = msg.raidID;
         EnterClass.enterBattle();
       }
     });

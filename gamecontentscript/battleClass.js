@@ -22,23 +22,26 @@ var BattleClass = {
     });
   },
   setUpObserver: function(){
-    BattleClass.battleButton = $(".btn-attack-start")[0];
-    if(BattleClass.battleButton){
-      BattleClass.observer = new MutationObserver(BattleClass.buttonHandler);
-      BattleClass.config = {
-        attributes: true,
-        attributeFilter: ["class"],
-        OldValue: true,
-        childList: true,
-        subtree: true
-      };
-      BattleClass.observer.observe(BattleClass.battleButton, BattleClass.config);
-    }
+    var intHandle = setInterval(function(){
+      BattleClass.battleButton = $(".btn-attack-start")[0];
+      if(BattleClass.battleButton){
+        BattleClass.observer = new MutationObserver(BattleClass.buttonHandler);
+        BattleClass.config = {
+              attributes: true,
+              attributeFilter: ["class"],
+              attributeOldValue: true
+          };
+        BattleClass.observer.observe(BattleClass.battleButton, BattleClass.config);
+        clearInterval(intHandle);
+      }
+    }, 500);
   },
   buttonHandler: function(mutations){
-    console.log("Mutation Found");
     mutations.forEach(function(mutation){
-      console.log(mutation);
+      if (mutation.target.className.indexOf("display-on") != -1){
+        //Trigger Attack
+        
+      }
     });
   }
 }

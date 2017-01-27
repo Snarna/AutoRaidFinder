@@ -4,6 +4,19 @@
 //Run
 mainLoadControl();
 
+function mainLoadControl(){
+  //Raid Finder Main Page
+  if(checkURL("gbf.game.mbga.jp") != -1) {
+    getGameTabID();
+  }
+  if(checkURL("#quest/assist") != -1){
+    EnterClass.setEnterClass();
+  }
+  if(checkURL("#raid_multi") != -1){
+    BattleClass.setBattleClass();
+  }
+}
+
 function checkURL(target){
   return location.href.indexOf(target);
 }
@@ -13,17 +26,4 @@ function getGameTabID(){
     EnterClass.currentTabID = response.tabID;
     console.log("Game Tab ID:" + EnterClass.currentTabID);
   });
-}
-
-function mainLoadControl(){
-  //Raid Finder Main Page
-  if(checkURL("gbf.game.mbga.jp") != -1) {
-    getGameTabID();
-  }
-  if(checkURL("#quest/assist")){
-    setEnterClass();
-  }
-  if(checkURL("#raid_multi")){
-    setBattleClass();
-  }
 }

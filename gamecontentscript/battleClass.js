@@ -13,7 +13,7 @@ var BattleClass = {
     BattleClass.startListen();
   },
   startListen: function(){
-    BattleClass.setUpObserver();
+    //BattleClass.setUpObserver();
     chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
       if(msg.backCommand == 'startAutoAttack'){
         //Start Auto-attack
@@ -40,7 +40,8 @@ var BattleClass = {
     mutations.forEach(function(mutation){
       if (mutation.target.className.indexOf("display-on") != -1){
         //Trigger Attack
-        
+        console.log("Triggering Attack..");
+        Injector.inject('$(".btn-attack-start").eq(0).trigger("tap")');
       }
     });
   }

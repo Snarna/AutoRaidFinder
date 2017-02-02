@@ -7,6 +7,7 @@ var EnterClass = {
   status: null,
   setEnterClass: function(){
     //Update Game Status
+    console.log("setEnterClass is called");
     StatusUpdater.update("idle");
     EnterClass.startListen();
   },
@@ -25,27 +26,39 @@ var EnterClass = {
   },
   joinRaid: function(){
     $('.frm-battle-key')[0].value = EnterClass.raidID;
+    console.log("joinRaid button click");
     Injector.inject("$(\".btn-post-key\").first().trigger('tap');");
   },
   selectSummon: function(){
-    if($(".btn-supporter.lis-supporter[data-attribute='5']").length > 0){
-      //data-attribute == 5 is light
-      $(".btn-supporter.lis-supporter[data-attribute='5']").each(function(index, object){
-        //2040056000 == Lucifer
-        if($(object).find("div.prt-summon-image").attr("data-image") == "2040056000"){
-            //Select Lucifer
-            Injector.inject("$($(\".btn-supporter.lis-supporter[data-attribute='5']\").get(5)).trigger('tap');");
-            //Exit Loop
-            return false;
-        }
-      });
-    }
-    setTimeout(EnterClass.selectSummon,1000);
+    var intHandle = setInterval(function(){
+      var temp = $(".btn-supporter.lis-supporter[data-attribute='5']");
+      if(temp){
+        /*
+        //data-attribute == 5 is light
+        $(".btn-supporter.lis-supporter[data-attribute='5']").each(function(index, object){
+          //2040056000 == Lucifer
+          if($(object).find("div.prt-summon-image").attr("data-image") == "2040056000"){
+              //Select Lucifer
+              console.log("selectSummon button click");
+              Injector.inject("$($(\".btn-supporter.lis-supporter[data-attribute='5']\").get(5)).trigger('tap');");
+              //Exit Loop
+              clearInterval(intHandle);
+          }
+        });
+      }*/
+        //Select Lucifer
+        console.log("selectSummon button click");
+        Injector.inject("$(\".btn-supporter.lis-supporter[data-attribute='5']\").eq(0).trigger('tap');");
+      }
+    },1500);
   },
   finalGo: function(){
-    if($('.pop-deck.supporter_raid').length > 0){
-      Injector.inject("$('.btn-usual-ok.se-quest-start').first().trigger('tap')");
-    }
-    setTimeout(EnterClass.finalGo, 1000);
+    var intHandle = setInterval(function(){
+      var temp = $('.pop-deck.supporter_raid');
+      if(temp){
+        console.log("finalGo button click");
+        Injector.inject("$('.btn-usual-ok.se-quest-start').first().trigger('tap')");
+      }
+    },1500);
   }
 }

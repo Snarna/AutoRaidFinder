@@ -16,8 +16,14 @@ var BattleClass = {
     chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
       if(msg.backCommand == 'startAutoAttack'){
         BattleClass.setUpAutoAttack();
+        //BattleClass.setUpAutoNext();
       }
     });
+  },
+  setUpAutoNext:function(){
+    setInterval(function(){
+      Injector.inject('$(".btn-result").trigger("tap");');
+    }, 1500);
   },
   setUpAutoAttack: function(){
     var intHandle = setInterval(function(){
@@ -40,6 +46,8 @@ var BattleClass = {
         //Trigger Attack
         console.log("Triggering Attack..");
         Injector.inject('$(".btn-attack-start").eq(0).trigger("tap")');
+        //Disconnect Observer
+        BattleClass.observer.disconnect();
       }
     });
   }

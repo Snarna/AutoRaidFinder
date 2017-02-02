@@ -16,11 +16,17 @@ chrome.runtime.onMessage.addListener(
       //From Game Content Script
       case "UpdateGameStatus":
         game.status = request.gameStatus;
-        if(game.status == 'idle' && game.userFlag == 1){
+        if((game.status == 'idle' || game.status == 'unknown') && game.userFlag == 1){
           //Do nothing, wait
         }
         else if(game.status == 'InBattle' && game.userFlag == 1){
           BattleController.startAutoAttack();
+        }
+        else if(game.status == 'InResult' && game.userFlag == 1){
+          ResultController.gatherResult();
+        }
+        else if(game.status == 'InIndex' && game.userFlag == 1){
+          PageController.goRaidPage();
         }
         break;
 

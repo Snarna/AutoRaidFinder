@@ -30,7 +30,12 @@
   ],
 
   "background": {
-    "scripts": ["backgroundscript/background.js", "backgroundscript/rfcontroller.js", "backgroundscript/battlecontroller.js"],
+    "scripts": [
+      "backgroundscript/background.js",
+      "backgroundscript/rfcontroller.js",
+      "backgroundscript/pagecontroller.js",
+      "backgroundscript/resultcontroller.js",
+      "backgroundscript/battlecontroller.js"],
     "persistent": true
   },
 
@@ -38,11 +43,24 @@
     {
       "all_frames": true,
       "matches": ["http://gbf.game.mbga.jp/*"],
-      "js": ["src/js/jquery-2.2.3.min.js", "src/js/popup.js","gamecontentscript/statusupdater.js" ,"gamecontentscript/injector.js", "gamecontentscript/enterclass.js","gamecontentscript/battleclass.js" ,"gamecontentscript/gamemain.js"]
+      "js": [
+        "src/js/jquery-2.2.3.min.js",
+        "src/js/popup.js",
+        "gamecontentscript/statusupdater.js",
+        "gamecontentscript/injector.js",
+        "gamecontentscript/enterclass.js",
+        "gamecontentscript/pageclass.js",
+        "gamecontentscript/resultclass.js",
+        "gamecontentscript/battleclass.js",
+        "gamecontentscript/gamemain.js"]
     },
     {
       "matches": ["*://gbf-raidfinder.aikats.us/*"],
-      "js": ["src/js/jquery-2.2.3.min.js", "src/js/popup.js", "rfcontentscript/RFOB.js", "rfcontentscript/RFMain.js"]
+      "js": [
+        "src/js/jquery-2.2.3.min.js",
+        "src/js/popup.js",
+        "rfcontentscript/RFOB.js",
+        "rfcontentscript/RFMain.js"]
     }
   ]
 }
